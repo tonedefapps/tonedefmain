@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TONEDEF APPS | OFFBEAT TECH. STAY LOUD.</title>
+    <title>ToneDef Apps | Offbeat Tech. Stay Loud.</title>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -46,7 +46,6 @@
             color: var(--gum); 
         }
 
-        /* T Monogram from 'Rude Boy Button' image */
         .logo svg {
             height: 40px; 
             width: auto;
@@ -82,7 +81,7 @@
         .cta:hover { background: var(--gum); color: var(--black); }
         .cta.web { background: var(--white); color: var(--black); border-color: var(--white); }
 
-        /* 04: THE OUTRO (SPAM SAFE LINK) */
+        /* 04: THE OUTRO */
         #contact { padding-bottom: 0; }
         .contact-link { font-family: var(--font-body); margin-top: 20px; font-weight: bold; color: var(--gum); text-decoration: underline;}
         .contact-link:hover { color: var(--white); }
@@ -100,7 +99,7 @@
                 <circle cx="50" cy="50" r="48" stroke="#BA9C7D" stroke-width="2" fill="none"/>
                 <path d="M20,25 H80 Q85,25 85,30 V40 H60 V75 Q60,80 55,80 H45 Q40,80 40,75 V40 H15 V30 Q15,25 20,25 Z M48,40 V75" fill="#BA9C7D"/>
             </svg>
-            TONEDEF.
+            ToneDef.
         </div>
         <div class="nav-links">
             <a href="#home">Who</a>
@@ -111,23 +110,23 @@
     </nav>
 
     <section id="home">
-        <h1>OFFBEAT<br>TECH.</h1>
-        <div class="tagline">STAY LOUD // INDIE APP DEV</div>
+        <h1>Offbeat<br>Tech.</h1>
+        <div class="tagline">Stay Loud // Indie App Dev</div>
     </section>
 
     <section id="about">
         <div class="content-box">
-            <h2>WE ARE APP DEVS.</h2>
+            <h2>We Are ToneDef Apps.</h2>
             <p>Desert-born. SoCal rooted. We build the tools the big shops are too bored to make. Bring us your weird ideas—we specialize in vibe-coded solutions that hit different.</p>
         </div>
     </section>
 
     <section id="apps">
-        <h2>THE LIBRARY</h2>
+        <h2>The Library</h2>
         <div class="app-grid">
             
             <div class="app-card">
-                <h3>STATIC PULSE</h3>
+                <h3>Static Pulse</h3>
                 <p>Noise tracking for the offbeat professional.</p>
                 <div class="platform-bar">
                     <a href="#" class="cta">Get for iOS</a>
@@ -137,7 +136,7 @@
             </div>
 
             <div class="app-card">
-                <h3>VOID BUILD</h3>
+                <h3>Void Build</h3>
                 <p>Minimalist planner for chaotic projects.</p>
                 <div class="platform-bar">
                     <a href="#" class="cta">Get for iOS</a>
@@ -147,7 +146,7 @@
             </div>
 
             <div class="app-card">
-                <h3>SHARP PLEAT</h3>
+                <h3>Sharp Pleat</h3>
                 <p>Tailored asset organization for devs.</p>
                 <div class="platform-bar">
                     <a href="#" class="cta">Get for iOS</a>
@@ -160,25 +159,25 @@
     </section>
 
     <section id="contact">
-        <h2>STAY LOUD.</h2>
+        <h2>Stay Loud.</h2>
         <a id="email" href="#" class="contact-link">Get Support</a>
         <div id="secret-door" onclick="alert('Admin Panel coming soon.')"></div>
         <div class="footer-check"></div>
     </section>
 
     <script>
-        // SPAM-SAFE EMAIL OBSTFUCATION
-        const emailUser = 'support';
-        const emailDomain = 'tonedefapps.com';
+        // SPAM-SAFE EMAIL OBSTFUCATION + CAMELCASE BRANDING
+        const emailUser = 'Support';
+        const emailDomain = 'ToneDefApps.com';
         const emailElement = document.getElementById('email');
 
-        // This prevents simple bots from crawling the mailto: address in the HTML
         emailElement.addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = `mailto:${emailUser}@${emailDomain}`;
+            // Lowercase standard for the mailto protocol
+            window.location.href = `mailto:${emailUser.toLowerCase()}@${emailDomain.toLowerCase()}`;
         });
 
-        // Set the text on load, also avoiding plain text in the HTML
+        // Visual text uses CamelCase for brand clarity
         emailElement.textContent = `${emailUser}@${emailDomain}`;
     </script>
 
