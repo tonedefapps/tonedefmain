@@ -4,152 +4,255 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TONEDEF APPS | OFFBEAT TECH. STAY LOUD.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gum: #BA9C7D; 
-            --black: #111111; 
-            --white: #FFFFFF; 
-            --font-head: 'Anton', sans-serif;
-            --font-body: 'Space Mono', monospace;
+            --gum-rubber: #BA9C7D;
+            --offbeat-black: #111111;
+            --ska-white: #FFFFFF;
+            --concrete-gray: #CCCCCC;
         }
 
-        * { box-sizing: border-box; }
-        body { background-color: var(--black); color: var(--white); font-family: var(--font-body); margin: 0; scroll-behavior: smooth; overflow-x: hidden; }
-        h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; margin: 0; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-
-        /* --- NAV & LOGO ALIGNMENT --- */
-        nav { 
-            position: fixed; 
-            width: 100%; 
-            top: 0; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 10px 40px; 
-            background: rgba(17,17,17,0.95); 
-            border-bottom: 3px solid var(--gum); 
-            z-index: 100; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .logo { 
+        body {
+            background-color: var(--ska-white);
+            color: var(--offbeat-black);
+            font-family: 'Space Mono', monospace;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header {
+            background-color: var(--offbeat-black);
+            color: var(--ska-white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px; 
-            font-size: 1.8rem; 
-            font-family: var(--font-head);
-            letter-spacing: 2px; 
-            color: var(--gum); 
+            gap: 15px;
         }
 
-        .logo svg { height: 45px; width: auto; }
-        .nav-links a { margin-left: 20px; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; }
-        .nav-links a:hover { color: var(--gum); }
+        /* Rude Boy Button Style */
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--gum-rubber);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px double var(--offbeat-black);
+            font-family: 'Anton', sans-serif;
+            color: var(--offbeat-black);
+            font-size: 1.5rem;
+        }
 
-        /* --- ZONES --- */
-        section { min-height: 100vh; padding: 120px 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-        #home { background-color: var(--gum); color: var(--black); }
-        #home h1 { font-size: clamp(4rem, 15vw, 10rem); line-height: 0.85; }
-        .tagline { font-weight: bold; margin-top: 20px; font-size: 1.2rem; border-top: 4px solid var(--black); display: inline-block; padding-top: 10px; }
+        nav a {
+            color: var(--ska-white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
 
-        #about { background-color: var(--black); }
-        .content-box { max-width: 800px; text-align: left; border-left: 5px solid var(--gum); padding-left: 30px; }
-        .content-box h2 { font-size: 3rem; margin-bottom: 20px; color: var(--gum); }
+        nav a:hover {
+            color: var(--gum-rubber);
+        }
 
-        /* --- THE APP LIBRARY --- */
-        #apps { background-color: #1a1a1a; }
-        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1000px; margin-top: 40px; }
-        .app-card { background: var(--black); border: 2px solid #333; padding: 40px; text-align: left; transition: 0.3s; }
-        .app-card:hover { border-color: var(--gum); transform: translateY(-5px); }
-        .app-card h3 { font-size: 2.5rem; color: var(--gum); margin-bottom: 10px; }
-        .app-card p { font-size: 0.95rem; line-height: 1.6; color: #bbb; margin-bottom: 30px; min-height: 80px; }
-        
-        .platform-bar { display: flex; flex-direction: column; gap: 10px; }
-        .cta { display: block; padding: 12px; text-align: center; font-size: 0.75rem; font-weight: bold; border: 2px solid var(--gum); color: var(--gum); text-transform: uppercase; }
-        .cta:hover { background: var(--gum); color: var(--black); }
-        .cta.web { background: var(--white); color: var(--black); border-color: var(--white); }
-        .cta.disabled { opacity: 0.2; cursor: not-allowed; border-color: #444; color: #444; }
+        .hero {
+            padding: 100px 5%;
+            text-align: center;
+            background-color: var(--concrete-gray);
+            border-bottom: 8px solid var(--offbeat-black);
+        }
 
-        /* --- THE OUTRO --- */
-        #contact { padding-bottom: 0; }
-        .footer-check { background: repeating-conic-gradient(var(--white) 0% 25%, var(--black) 0% 50%) 0 0/40px 40px; height: 100px; width: 100%; margin-top: 60px; }
-        #secret-door { margin-bottom: 20px; cursor: crosshair; opacity: 0.3; transition: 0.3s; }
-        #secret-door:hover { opacity: 1; }
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--offbeat-black);
+            font-weight: 700;
+        }
+
+        .checker-divider {
+            height: 40px;
+            background-image: 
+                linear-gradient(45deg, var(--gum-rubber) 25%, transparent 25%), 
+                linear-gradient(-45deg, var(--gum-rubber) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--gum-rubber) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--gum-rubber) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            background-color: var(--offbeat-black);
+        }
+
+        section {
+            padding: 80px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-left: 10px solid var(--gum-rubber);
+            padding-left: 1rem;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .app-card {
+            background: var(--ska-white);
+            border: 4px solid var(--offbeat-black);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .app-card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 8px 8px 0px var(--gum-rubber);
+        }
+
+        .app-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        footer {
+            background-color: var(--offbeat-black);
+            color: var(--ska-white);
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .stay-loud {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--gum-rubber);
+        }
+
+        .contact-info {
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--offbeat-black);
+            color: var(--ska-white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-family: 'Anton', sans-serif;
+            margin-top: 1rem;
+            border: 2px solid var(--offbeat-black);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--gum-rubber);
+            color: var(--offbeat-black);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .stay-loud { font-size: 2.5rem; }
+            nav ul { display: none; } /* Simplified for demo */
+        }
     </style>
 </head>
 <body>
 
+<header>
+    <div class="logo-container">
+        <div class="logo-icon">T</div>
+        <div class="brand-font" style="font-size: 1.5rem;">TONEDEF APPS</div>
+    </div>
     <nav>
-        <div class="logo">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 70 Q 15 65 20 65 L 80 65 Q 85 65 85 70 L 85 75 Q 85 80 80 80 L 20 80 Q 15 80 15 75 Z" fill="#BA9C7D"/>
-                <path d="M25 65 C 25 35 40 25 50 25 C 60 25 75 35 75 65" fill="#BA9C7D"/>
-                <rect x="25" y="55" width="50" height="6" fill="#111111"/>
-            </svg>
-            TONEDEF
-        </div>
-        <div class="nav-links">
-            <a href="#about">Who</a>
-            <a href="#apps">Apps</a>
-            <a href="#contact">Contact</a>
-        </div>
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">WORK</a></li>
+            <li><a href="#">OFFS</a></li>
+            <li><a href="#">BLOG</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
     </nav>
+</header>
 
-    <section id="home">
-        <h1>OFFBEAT<br>TECH.</h1>
-        <div class="tagline">STAY LOUD // GILBERT, AZ</div>
-    </section>
+<div class="hero">
+    <h1>TONEDEF APPS</h1>
+    <p>OFFBEAT TECH. STAY LOUD.</p>
+    <a href="#about" class="btn">LEARN MORE</a>
+</div>
 
-    <section id="about">
-        <div class="content-box">
-            <h2>WE ARE APP DEVS.</h2>
-            <p>Desert-born. SoCal rooted. We build the tools the big shops are too bored to make. Bring us your weird ideas—we specialize in vibe-coded solutions that hit different.</p>
+<div class="checker-divider"></div>
+
+<section id="about">
+    <h2 class="section-title">ABOUT</h2>
+    <p>We build specialized technology with a focus on interoperability and professional implementation. Based in Gilbert, Arizona, we bridge the gap between complex systems and user-centric design.</p>
+</section>
+
+<section id="apps">
+    <h2 class="section-title">OUR APPS</h2>
+    <div class="app-grid">
+        <div class="app-card">
+            <div class="brand-font" style="font-size: 2rem;">iOS</div>
+            <p>App Store</p>
+            <a href="#" class="btn">DOWNLOAD</a>
         </div>
-    </section>
-
-    <section id="apps">
-        <h2>THE LIBRARY</h2>
-        <div class="app-grid">
-            
-            <div class="app-card">
-                <h3>KOVRD</h3>
-                <p>Real-time, device-side AI scam defense. Protect your Shield, empower your Guard. Total privacy, zero noise.</p>
-                <div class="platform-bar">
-                    <a href="#" class="cta disabled">iOS Restricted</a>
-                    <a href="#" class="cta">Get for Android</a>
-                    <a href="#" class="cta web">Web Dashboard</a>
-                </div>
-            </div>
-
-            <div class="app-card">
-                <h3>BTW</h3>
-                <p>Because they would if they could. Intelligent cargo and occupant alerts for the moments that matter most.</p>
-                <div class="platform-bar">
-                    <a href="#" class="cta">Get for iOS</a>
-                    <a href="#" class="cta">Get for Android</a>
-                    <a href="#" class="cta web">Launch Web App</a>
-                </div>
-            </div>
-
+        <div class="app-card">
+            <div class="brand-font" style="font-size: 2rem;">MOBILE</div>
+            <p>Direct APK</p>
+            <a href="#" class="btn">DOWNLOAD</a>
         </div>
-    </section>
-
-    <section id="contact">
-        <h2>STAY LOUD.</h2>
-        <p>support@tonedefapps.com</p>
-        
-        <div id="secret-door" onclick="alert('ADMIN: Enter skasnotdead')">
-            <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 70 Q 15 65 20 65 L 80 65 Q 85 65 85 70 L 85 75 Q 85 80 80 80 L 20 80 Q 15 80 15 75 Z" fill="#BA9C7D"/>
-                <path d="M25 65 C 25 35 40 25 50 25 C 60 25 75 35 75 65" fill="#BA9C7D"/>
-                <rect x="25" y="55" width="50" height="6" fill="#111111"/>
-            </svg>
+        <div class="app-card">
+            <div class="brand-font" style="font-size: 2rem;">ANDROID</div>
+            <p>Google Play</p>
+            <a href="#" class="btn">DOWNLOAD</a>
         </div>
+    </div>
+</section>
 
-        <div class="footer-check"></div>
-    </section>
+<footer>
+    <div class="stay-loud brand-font">STAY LOUD</div>
+    <p class="contact-info">CONTACT US ANYTIME</p>
+    <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 TONEDEF APPS. ALL RIGHTS RESERVED.</p>
+</footer>
 
 </body>
 </html>
