@@ -21,11 +21,34 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
 
         /* --- NAV --- */
-        nav { position: fixed; width: 100%; top: 0; display: flex; justify-content: space-between; padding: 20px 40px; background: rgba(17,17,17,0.95); border-bottom: 3px solid var(--gum); z-index: 100; }
-        .logo { font-size: 1.8rem; letter-spacing: 2px; color: var(--gum); }
-        .nav-links a { margin-left: 20px; font-size: 0.8rem; text-transform: uppercase; border-bottom: 2px solid transparent; }
-        .nav-links a:hover { border-color: var(--gum); }
+       nav { 
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; /* This keeps the hat and text centered vertically */
+    padding: 10px 40px; 
+    background: rgba(17,17,17,0.95); 
+    border-bottom: 3px solid var(--gum); 
+    z-index: 100; 
+}
 
+        /* --- LOGO --- */
+        .logo { 
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Creates space between the hat and the word TONEDEF */
+    font-size: 1.8rem; 
+    font-family: var(--font-head);
+    letter-spacing: 2px; 
+    color: var(--gum); 
+}
+
+.logo svg {
+    height: 50px; /* Forces the hat to stay a reasonable size */
+    width: auto;
+}
         /* --- ZONES --- */
         section { min-height: 100vh; padding: 120px 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
 
