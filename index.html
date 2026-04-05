@@ -4,159 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TONEDEF APPS | OFFBEAT TECH. STAY LOUD.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gum-rubber: #BA9C7D;
-            --offbeat-black: #111111;
-            --ska-white: #FFFFFF;
-            --concrete-gray: #CCCCCC;
+            --gum: #BA9C7D; /* The Vans Sole */
+            --black: #111111; /* Offbeat Black */
+            --white: #FFFFFF; /* Ska White */
+            --font-head: 'Anton', sans-serif;
+            --font-body: 'Space Mono', monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* --- GLOBAL STYLES --- */
+        * { box-sizing: border-box; }
+        body { background-color: var(--black); color: var(--white); font-family: var(--font-body); margin: 0; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; margin: 0; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        body {
-            background-color: var(--concrete-gray);
-            color: var(--offbeat-black);
-            font-family: 'Space Mono', monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
+        /* --- NAV --- */
+       nav { 
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; /* This keeps the hat and text centered vertically */
+    padding: 10px 40px; 
+    background: rgba(17,17,17,0.95); 
+    border-bottom: 3px solid var(--gum); 
+    z-index: 100; 
+}
 
-        .brand-font {
-            font-family: 'Anton', sans-serif;
-            text-transform: uppercase;
-        }
+        /* --- LOGO --- */
+        .logo { 
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Creates space between the hat and the word TONEDEF */
+    font-size: 1.8rem; 
+    font-family: var(--font-head);
+    letter-spacing: 2px; 
+    color: var(--gum); 
+}
 
-        /* Main Container */
-        main {
-            width: 100%;
-            max-width: 800px;
-            background-color: var(--ska-white);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            border-left: 20px solid var(--offbeat-black);
-            border-right: 20px solid var(--offbeat-black);
-        }
+.logo svg {
+    height: 50px; /* Forces the hat to stay a reasonable size */
+    width: auto;
+}
+        /* --- ZONES --- */
+        section { min-height: 100vh; padding: 120px 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
 
-        /* Hero Section */
-        header {
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 2px solid var(--offbeat-black);
-        }
+        /* 01: THE HOOK */
+        #home { background-color: var(--gum); color: var(--black); }
+        #home h1 { font-size: clamp(4rem, 15vw, 10rem); line-height: 0.85; }
+        .tagline { font-weight: bold; margin-top: 20px; font-size: 1.2rem; }
 
-        .rude-boy-logo {
-            width: 120px;
-            height: 120px;
-            background-color: var(--gum-rubber);
-            border: 8px solid var(--offbeat-black);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px auto;
-            font-family: 'Anton', sans-serif;
-            font-size: 4rem;
-            color: var(--offbeat-black);
-            box-shadow: 6px 6px 0px var(--offbeat-black);
-        }
+        /* 02: THE PITCH */
+        #about { background-color: var(--black); }
+        .content-box { max-width: 800px; text-align: left; border-left: 5px solid var(--gum); padding-left: 30px; }
+        .content-box h2 { font-size: 3rem; margin-bottom: 20px; color: var(--gum); }
 
-        h1 {
-            font-size: 4.5rem;
-            line-height: 0.9;
-            margin-bottom: 10px;
-        }
+        /* 03: THE LIBRARY (TRIPLE LINKS) */
+        #apps { background-color: #1a1a1a; }
+        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1200px; margin-top: 40px; }
+        .app-card { background: var(--black); border: 2px solid #333; padding: 40px; text-align: left; position: relative; overflow: hidden; }
+        .app-card:hover { border-color: var(--gum); }
+        .app-card h3 { font-size: 2rem; margin-bottom: 10px; }
+        .app-card p { font-size: 0.9rem; color: #888; margin-bottom: 30px; min-height: 50px; }
+        
+        /* THE TRIPLE CTA BAR */
+        .platform-bar { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .cta { display: block; padding: 12px; text-align: center; font-size: 0.7rem; font-weight: bold; border: 1px solid var(--gum); color: var(--gum); text-transform: uppercase; }
+        .cta:hover { background: var(--gum); color: var(--black); }
+        .cta.web { background: var(--white); color: var(--black); border-color: var(--white); }
 
-        .tagline {
-            font-size: 1.2rem;
-            font-weight: 700;
-            background-color: var(--offbeat-black);
-            color: var(--ska-white);
-            display: inline-block;
-            padding: 5px 15px;
-        }
-
-        /* Minimal Content */
-        .content {
-            flex-grow: 1;
-            padding: 60px 40px;
-            text-align: center;
-        }
-
-        .vertical-beat {
-            font-size: 1.5rem;
-            letter-spacing: 10px;
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            margin: 40px auto;
-            color: var(--offbeat-black);
-            font-weight: 900;
-        }
-
-        /* Checkerboard footer effect */
-        .checker-base {
-            height: 60px;
-            background-image: 
-                linear-gradient(45deg, var(--offbeat-black) 25%, transparent 25%), 
-                linear-gradient(-45deg, var(--offbeat-black) 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, var(--offbeat-black) 75%),
-                linear-gradient(-45deg, transparent 75%, var(--offbeat-black) 75%);
-            background-size: 30px 30px;
-            background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
-            background-color: var(--gum-rubber);
-            border-top: 4px solid var(--offbeat-black);
-        }
-
-        footer {
-            background-color: var(--offbeat-black);
-            color: var(--ska-white);
-            padding: 40px;
-            text-align: center;
-        }
-
-        .stay-loud {
-            font-size: 3rem;
-            color: var(--gum-rubber);
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            main { border-width: 10px; }
-        }
+        /* 04: THE OUTRO */
+        #contact { padding-bottom: 0; }
+        .footer-check { background: repeating-conic-gradient(var(--white) 0% 25%, var(--black) 0% 50%) 0 0/40px 40px; height: 100px; width: 100%; margin-top: 60px; }
+        
+        /* ADMIN GATE */
+        #secret-door { width: 40px; height: 40px; cursor: crosshair; margin-top: 20px; opacity: 0.2; }
     </style>
 </head>
 <body>
 
-<main>
-    <header>
-        <div class="rude-boy-logo">T</div>
-        <h1 class="brand-font">TONEDEF<br>APPS</h1>
-        <p class="tagline brand-font">OFFBEAT TECH. STAY LOUD.</p>
-    </header>
+    <nav>
+        <div class="logo">TONEDEF.</div>
+        <div class="nav-links">
+            <a href="#home">Who</a>
+            <a href="#about">About</a>
+            <a href="#apps">Apps</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-    <div class="content">
-        <p>Specialized platform implementation & healthcare interoperability.</p>
-        
-        <div class="vertical-beat brand-font">TAPS</div>
-    </div>
+    <section id="home">
+        <h1>OFFBEAT<br>TECH.</h1>
+        <div class="tagline">STAY LOUD // INDIE APP DEV</div>
+    </section>
 
-    <div class="checker-base"></div>
-    
-    <footer>
-        <div class="stay-loud brand-font">STAY LOUD</div>
-        <p style="margin-top: 10px; font-size: 0.7rem; opacity: 0.6;">GILBERT, AZ // 2026</p>
-    </footer>
-</main>
+    <section id="about">
+        <div class="content-box">
+            <h2>WE ARE APP DEVS.</h2>
+            <p>Desert-born. SoCal rooted. We build the tools the big shops are too bored to make. Bring us your weird ideas—we specialize in vibe-coded solutions that hit different.</p>
+        </div>
+    </section>
+
+    <section id="apps">
+        <h2>THE LIBRARY</h2>
+        <div class="app-grid">
+            
+            <div class="app-card">
+                <h3>STATIC PULSE</h3>
+                <p>Noise tracking for the offbeat professional.</p>
+                <div class="platform-bar">
+                    <a href="#" class="cta">Get for iOS</a>
+                    <a href="#" class="cta">Get for Android</a>
+                    <a href="#" class="cta web">Launch Web App</a>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <h3>VOID BUILD</h3>
+                <p>Minimalist planner for chaotic projects.</p>
+                <div class="platform-bar">
+                    <a href="#" class="cta">Get for iOS</a>
+                    <a href="#" class="cta">Get for Android</a>
+                    <a href="#" class="cta web">Launch Web App</a>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <h3>SHARP PLEAT</h3>
+                <p>Tailored asset organization for devs.</p>
+                <div class="platform-bar">
+                    <a href="#" class="cta">Get for iOS</a>
+                    <a href="#" class="cta">Get for Android</a>
+                    <a href="#" class="cta web">Launch Web App</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>STAY LOUD.</h2>
+        <p>support@tonedefapps.com</p>
+        <div id="secret-door" onclick="alert('Admin Panel coming soon. Edit index.html directly for now.')"></div>
+        <div class="footer-check"></div>
+    </section>
 
 </body>
 </html>
