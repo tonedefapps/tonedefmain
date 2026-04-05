@@ -6,7 +6,7 @@
     <title>TONEDEF APPS | OFFBEAT TECH. STAY LOUD.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --gum-rubber: #BA9C7D;
@@ -22,237 +22,141 @@
         }
 
         body {
-            background-color: var(--ska-white);
+            background-color: var(--concrete-gray);
             color: var(--offbeat-black);
             font-family: 'Space Mono', monospace;
-            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        h1, h2, h3, .brand-font {
+        .brand-font {
             font-family: 'Anton', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
+        /* Main Container */
+        main {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--ska-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            border-left: 20px solid var(--offbeat-black);
+            border-right: 20px solid var(--offbeat-black);
+        }
+
+        /* Hero Section */
         header {
-            background-color: var(--offbeat-black);
-            color: var(--ska-white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--offbeat-black);
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* Rude Boy Button Style */
-        .logo-icon {
-            width: 40px;
-            height: 40px;
+        .rude-boy-logo {
+            width: 120px;
+            height: 120px;
             background-color: var(--gum-rubber);
+            border: 8px solid var(--offbeat-black);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px double var(--offbeat-black);
+            margin: 0 auto 30px auto;
             font-family: 'Anton', sans-serif;
+            font-size: 4rem;
             color: var(--offbeat-black);
-            font-size: 1.5rem;
+            box-shadow: 6px 6px 0px var(--offbeat-black);
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
+        h1 {
+            font-size: 4.5rem;
+            line-height: 0.9;
+            margin-bottom: 10px;
         }
 
-        nav a {
-            color: var(--ska-white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--gum-rubber);
-        }
-
-        .hero {
-            padding: 100px 5%;
-            text-align: center;
-            background-color: var(--concrete-gray);
-            border-bottom: 8px solid var(--offbeat-black);
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: var(--offbeat-black);
+        .tagline {
+            font-size: 1.2rem;
             font-weight: 700;
-        }
-
-        .checker-divider {
-            height: 40px;
-            background-image: 
-                linear-gradient(45deg, var(--gum-rubber) 25%, transparent 25%), 
-                linear-gradient(-45deg, var(--gum-rubber) 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, var(--gum-rubber) 75%),
-                linear-gradient(-45deg, transparent 75%, var(--gum-rubber) 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
             background-color: var(--offbeat-black);
+            color: var(--ska-white);
+            display: inline-block;
+            padding: 5px 15px;
         }
 
-        section {
-            padding: 80px 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            border-left: 10px solid var(--gum-rubber);
-            padding-left: 1rem;
-        }
-
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .app-card {
-            background: var(--ska-white);
-            border: 4px solid var(--offbeat-black);
-            padding: 2rem;
+        /* Minimal Content */
+        .content {
+            flex-grow: 1;
+            padding: 60px 40px;
             text-align: center;
-            transition: transform 0.2s;
         }
 
-        .app-card:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 8px 8px 0px var(--gum-rubber);
+        .vertical-beat {
+            font-size: 1.5rem;
+            letter-spacing: 10px;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            margin: 40px auto;
+            color: var(--offbeat-black);
+            font-weight: 900;
         }
 
-        .app-card i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
+        /* Checkerboard footer effect */
+        .checker-base {
+            height: 60px;
+            background-image: 
+                linear-gradient(45deg, var(--offbeat-black) 25%, transparent 25%), 
+                linear-gradient(-45deg, var(--offbeat-black) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--offbeat-black) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--offbeat-black) 75%);
+            background-size: 30px 30px;
+            background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+            background-color: var(--gum-rubber);
+            border-top: 4px solid var(--offbeat-black);
         }
 
         footer {
             background-color: var(--offbeat-black);
             color: var(--ska-white);
-            padding: 60px 5%;
+            padding: 40px;
             text-align: center;
         }
 
         .stay-loud {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
             color: var(--gum-rubber);
         }
 
-        .contact-info {
-            font-style: italic;
-            opacity: 0.8;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--offbeat-black);
-            color: var(--ska-white);
-            padding: 1rem 2rem;
-            text-decoration: none;
-            font-family: 'Anton', sans-serif;
-            margin-top: 1rem;
-            border: 2px solid var(--offbeat-black);
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background-color: var(--gum-rubber);
-            color: var(--offbeat-black);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .stay-loud { font-size: 2.5rem; }
-            nav ul { display: none; } /* Simplified for demo */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            main { border-width: 10px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <div class="logo-icon">T</div>
-        <div class="brand-font" style="font-size: 1.5rem;">TONEDEF APPS</div>
+<main>
+    <header>
+        <div class="rude-boy-logo">T</div>
+        <h1 class="brand-font">TONEDEF<br>APPS</h1>
+        <p class="tagline brand-font">OFFBEAT TECH. STAY LOUD.</p>
+    </header>
+
+    <div class="content">
+        <p>Specialized platform implementation & healthcare interoperability.</p>
+        
+        <div class="vertical-beat brand-font">TAPS</div>
     </div>
-    <nav>
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">WORK</a></li>
-            <li><a href="#">OFFS</a></li>
-            <li><a href="#">BLOG</a></li>
-            <li><a href="#">CONTACT</a></li>
-        </ul>
-    </nav>
-</header>
 
-<div class="hero">
-    <h1>TONEDEF APPS</h1>
-    <p>OFFBEAT TECH. STAY LOUD.</p>
-    <a href="#about" class="btn">LEARN MORE</a>
-</div>
-
-<div class="checker-divider"></div>
-
-<section id="about">
-    <h2 class="section-title">ABOUT</h2>
-    <p>We build specialized technology with a focus on interoperability and professional implementation. Based in Gilbert, Arizona, we bridge the gap between complex systems and user-centric design.</p>
-</section>
-
-<section id="apps">
-    <h2 class="section-title">OUR APPS</h2>
-    <div class="app-grid">
-        <div class="app-card">
-            <div class="brand-font" style="font-size: 2rem;">iOS</div>
-            <p>App Store</p>
-            <a href="#" class="btn">DOWNLOAD</a>
-        </div>
-        <div class="app-card">
-            <div class="brand-font" style="font-size: 2rem;">MOBILE</div>
-            <p>Direct APK</p>
-            <a href="#" class="btn">DOWNLOAD</a>
-        </div>
-        <div class="app-card">
-            <div class="brand-font" style="font-size: 2rem;">ANDROID</div>
-            <p>Google Play</p>
-            <a href="#" class="btn">DOWNLOAD</a>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="stay-loud brand-font">STAY LOUD</div>
-    <p class="contact-info">CONTACT US ANYTIME</p>
-    <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 TONEDEF APPS. ALL RIGHTS RESERVED.</p>
-</footer>
+    <div class="checker-base"></div>
+    
+    <footer>
+        <div class="stay-loud brand-font">STAY LOUD</div>
+        <p style="margin-top: 10px; font-size: 0.7rem; opacity: 0.6;">GILBERT, AZ // 2026</p>
+    </footer>
+</main>
 
 </body>
 </html>
