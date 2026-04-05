@@ -47,9 +47,8 @@
         }
 
         .logo svg {
-            height: 40px; 
+            height: 45px; 
             width: auto;
-            fill: var(--gum);
         }
 
         .nav-links { display: flex; gap: 20px; text-transform: uppercase; font-size: 0.9rem;}
@@ -72,7 +71,7 @@
 
         /* 03: THE LIBRARY */
         #apps { background-color: #1a1a1a; }
-        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1200px; margin-top: 40px; }
+        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 900px; margin-top: 40px; }
         .app-card { background: var(--black); border: 2px solid #333; padding: 40px; text-align: left; transition: transform 0.2s; position: relative; overflow: hidden; }
         .app-card:hover { border-color: var(--gum); transform: translateY(-5px); }
         .app-card h3 { font-size: 2rem; margin-bottom: 10px; }
@@ -81,7 +80,6 @@
         .platform-bar { display: grid; grid-template-columns: 1fr; gap: 10px; }
         .cta { display: block; padding: 12px; text-align: center; font-size: 0.7rem; font-weight: bold; border: 1px solid var(--gum); color: var(--gum); text-transform: uppercase; }
         .cta:hover { background: var(--gum); color: var(--black); }
-        .cta.web { background: var(--white); color: var(--black); border-color: var(--white); }
 
         /* 04: THE OUTRO */
         #contact { padding-bottom: 0; }
@@ -89,7 +87,6 @@
         .contact-link:hover { color: var(--white); }
         .footer-check { background: repeating-conic-gradient(var(--white) 0% 25%, var(--black) 0% 50%) 0 0/40px 40px; height: 100px; width: 100%; margin-top: 60px; }
         
-        /* ADMIN GATE */
         #secret-door { width: 40px; height: 40px; cursor: crosshair; margin-top: 20px; opacity: 0.1; }
     </style>
 </head>
@@ -98,8 +95,9 @@
     <nav>
         <div class="logo">
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="48" stroke="#BA9C7D" stroke-width="2" fill="none"/>
-                <path d="M20,25 H80 Q85,25 85,30 V40 H60 V75 Q60,80 55,80 H45 Q40,80 40,75 V40 H15 V30 Q15,25 20,25 Z M48,40 V75" fill="#BA9C7D"/>
+                <circle cx="50" cy="50" r="48" stroke="#BA9C7D" stroke-width="3" fill="none"/>
+                <path d="M22,28 H78 V42 H62 V78 H38 V42 H22 Z" fill="#BA9C7D"/>
+                <path d="M52,42 V68 H62" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="square"/>
             </svg>
             ToneDef.
         </div>
@@ -132,8 +130,8 @@
                 <h3>Kovrd</h3>
                 <p>Advanced protection against digital and telephone scams for the elderly.</p>
                 <div class="platform-bar">
-                    <a href="#" class="cta">Get for iOS</a>
-                    <a href="#" class="cta">Get for Android</a>
+                    <a href="#" class="cta">Coming to iOS</a>
+                    <a href="#" class="cta">Coming to Android</a>
                 </div>
             </div>
 
@@ -141,18 +139,8 @@
                 <h3>BTW</h3>
                 <p>Never forget a pet or child in your car again with smart proximity alerts.</p>
                 <div class="platform-bar">
-                    <a href="#" class="cta">Get for iOS</a>
-                    <a href="#" class="cta">Get for Android</a>
-                </div>
-            </div>
-
-            <div class="app-card">
-                <h3>Static Pulse</h3>
-                <p>Minimalist noise tracking for the offbeat professional.</p>
-                <div class="platform-bar">
-                    <a href="#" class="cta">Get for iOS</a>
-                    <a href="#" class="cta">Get for Android</a>
-                    <a href="#" class="cta web">Launch Web App</a>
+                    <a href="#" class="cta">Coming to iOS</a>
+                    <a href="#" class="cta">Coming to Android</a>
                 </div>
             </div>
 
@@ -167,7 +155,6 @@
     </section>
 
     <script>
-        // SPAM-SAFE EMAIL OBSTFUCATION + CAMELCASE BRANDING
         const emailUser = 'Support';
         const emailDomain = 'ToneDefApps.com';
         const emailElement = document.getElementById('email');
