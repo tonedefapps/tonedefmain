@@ -7,90 +7,91 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gum: #BA9C7D; /* The Vans Sole */
-            --black: #111111; /* Offbeat Black */
-            --white: #FFFFFF; /* Ska White */
+            --gum: #BA9C7D; 
+            --black: #111111; 
+            --white: #FFFFFF; 
             --font-head: 'Anton', sans-serif;
             --font-body: 'Space Mono', monospace;
         }
 
-        /* --- GLOBAL STYLES --- */
         * { box-sizing: border-box; }
-        body { background-color: var(--black); color: var(--white); font-family: var(--font-body); margin: 0; scroll-behavior: smooth; }
+        body { background-color: var(--black); color: var(--white); font-family: var(--font-body); margin: 0; scroll-behavior: smooth; overflow-x: hidden; }
         h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; margin: 0; }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* --- NAV --- */
-       nav { 
-    position: fixed; 
-    width: 100%; 
-    top: 0; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; /* This keeps the hat and text centered vertically */
-    padding: 10px 40px; 
-    background: rgba(17,17,17,0.95); 
-    border-bottom: 3px solid var(--gum); 
-    z-index: 100; 
-}
+        /* --- NAV & LOGO ALIGNMENT --- */
+        nav { 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px 40px; 
+            background: rgba(17,17,17,0.95); 
+            border-bottom: 3px solid var(--gum); 
+            z-index: 100; 
+        }
 
-        /* --- LOGO --- */
         .logo { 
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Creates space between the hat and the word TONEDEF */
-    font-size: 1.8rem; 
-    font-family: var(--font-head);
-    letter-spacing: 2px; 
-    color: var(--gum); 
-}
+            display: flex;
+            align-items: center;
+            gap: 15px; 
+            font-size: 1.8rem; 
+            font-family: var(--font-head);
+            letter-spacing: 2px; 
+            color: var(--gum); 
+        }
 
-.logo svg {
-    height: 50px; /* Forces the hat to stay a reasonable size */
-    width: auto;
-}
+        .logo svg { height: 45px; width: auto; }
+        .nav-links a { margin-left: 20px; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; }
+        .nav-links a:hover { color: var(--gum); }
+
         /* --- ZONES --- */
         section { min-height: 100vh; padding: 120px 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
 
-        /* 01: THE HOOK */
         #home { background-color: var(--gum); color: var(--black); }
         #home h1 { font-size: clamp(4rem, 15vw, 10rem); line-height: 0.85; }
-        .tagline { font-weight: bold; margin-top: 20px; font-size: 1.2rem; }
+        .tagline { font-weight: bold; margin-top: 20px; font-size: 1.2rem; border-top: 4px solid var(--black); display: inline-block; padding-top: 10px; }
 
-        /* 02: THE PITCH */
         #about { background-color: var(--black); }
         .content-box { max-width: 800px; text-align: left; border-left: 5px solid var(--gum); padding-left: 30px; }
         .content-box h2 { font-size: 3rem; margin-bottom: 20px; color: var(--gum); }
 
-        /* 03: THE LIBRARY (TRIPLE LINKS) */
+        /* --- THE APP LIBRARY --- */
         #apps { background-color: #1a1a1a; }
-        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1200px; margin-top: 40px; }
-        .app-card { background: var(--black); border: 2px solid #333; padding: 40px; text-align: left; position: relative; overflow: hidden; }
-        .app-card:hover { border-color: var(--gum); }
-        .app-card h3 { font-size: 2rem; margin-bottom: 10px; }
-        .app-card p { font-size: 0.9rem; color: #888; margin-bottom: 30px; min-height: 50px; }
+        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1000px; margin-top: 40px; }
+        .app-card { background: var(--black); border: 2px solid #333; padding: 40px; text-align: left; transition: 0.3s; }
+        .app-card:hover { border-color: var(--gum); transform: translateY(-5px); }
+        .app-card h3 { font-size: 2.5rem; color: var(--gum); margin-bottom: 10px; }
+        .app-card p { font-size: 0.95rem; line-height: 1.6; color: #bbb; margin-bottom: 30px; min-height: 80px; }
         
-        /* THE TRIPLE CTA BAR */
-        .platform-bar { display: grid; grid-template-columns: 1fr; gap: 10px; }
-        .cta { display: block; padding: 12px; text-align: center; font-size: 0.7rem; font-weight: bold; border: 1px solid var(--gum); color: var(--gum); text-transform: uppercase; }
+        .platform-bar { display: flex; flex-direction: column; gap: 10px; }
+        .cta { display: block; padding: 12px; text-align: center; font-size: 0.75rem; font-weight: bold; border: 2px solid var(--gum); color: var(--gum); text-transform: uppercase; }
         .cta:hover { background: var(--gum); color: var(--black); }
         .cta.web { background: var(--white); color: var(--black); border-color: var(--white); }
+        .cta.disabled { opacity: 0.2; cursor: not-allowed; border-color: #444; color: #444; }
 
-        /* 04: THE OUTRO */
+        /* --- THE OUTRO --- */
         #contact { padding-bottom: 0; }
         .footer-check { background: repeating-conic-gradient(var(--white) 0% 25%, var(--black) 0% 50%) 0 0/40px 40px; height: 100px; width: 100%; margin-top: 60px; }
-        
-        /* ADMIN GATE */
-        #secret-door { width: 40px; height: 40px; cursor: crosshair; margin-top: 20px; opacity: 0.2; }
+        #secret-door { margin-bottom: 20px; cursor: crosshair; opacity: 0.3; transition: 0.3s; }
+        #secret-door:hover { opacity: 1; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">TONEDEF.</div>
+        <div class="logo">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 70 Q 15 65 20 65 L 80 65 Q 85 65 85 70 L 85 75 Q 85 80 80 80 L 20 80 Q 15 80 15 75 Z" fill="#BA9C7D"/>
+                <path d="M25 65 C 25 35 40 25 50 25 C 60 25 75 35 75 65" fill="#BA9C7D"/>
+                <rect x="25" y="55" width="50" height="6" fill="#111111"/>
+            </svg>
+            TONEDEF
+        </div>
         <div class="nav-links">
-            <a href="#home">Who</a>
-            <a href="#about">About</a>
+            <a href="#about">Who</a>
             <a href="#apps">Apps</a>
             <a href="#contact">Contact</a>
         </div>
@@ -98,7 +99,7 @@
 
     <section id="home">
         <h1>OFFBEAT<br>TECH.</h1>
-        <div class="tagline">STAY LOUD // INDIE APP DEV</div>
+        <div class="tagline">STAY LOUD // GILBERT, AZ</div>
     </section>
 
     <section id="about">
@@ -113,28 +114,18 @@
         <div class="app-grid">
             
             <div class="app-card">
-                <h3>STATIC PULSE</h3>
-                <p>Noise tracking for the offbeat professional.</p>
+                <h3>KOVRD</h3>
+                <p>Real-time, device-side AI scam defense. Protect your Shield, empower your Guard. Total privacy, zero noise.</p>
                 <div class="platform-bar">
-                    <a href="#" class="cta">Get for iOS</a>
+                    <a href="#" class="cta disabled">iOS Restricted</a>
                     <a href="#" class="cta">Get for Android</a>
-                    <a href="#" class="cta web">Launch Web App</a>
+                    <a href="#" class="cta web">Web Dashboard</a>
                 </div>
             </div>
 
             <div class="app-card">
-                <h3>VOID BUILD</h3>
-                <p>Minimalist planner for chaotic projects.</p>
-                <div class="platform-bar">
-                    <a href="#" class="cta">Get for iOS</a>
-                    <a href="#" class="cta">Get for Android</a>
-                    <a href="#" class="cta web">Launch Web App</a>
-                </div>
-            </div>
-
-            <div class="app-card">
-                <h3>SHARP PLEAT</h3>
-                <p>Tailored asset organization for devs.</p>
+                <h3>BTW</h3>
+                <p>Because they would if they could. Intelligent cargo and occupant alerts for the moments that matter most.</p>
                 <div class="platform-bar">
                     <a href="#" class="cta">Get for iOS</a>
                     <a href="#" class="cta">Get for Android</a>
@@ -148,7 +139,15 @@
     <section id="contact">
         <h2>STAY LOUD.</h2>
         <p>support@tonedefapps.com</p>
-        <div id="secret-door" onclick="alert('Admin Panel coming soon. Edit index.html directly for now.')"></div>
+        
+        <div id="secret-door" onclick="alert('ADMIN: Enter skasnotdead')">
+            <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 70 Q 15 65 20 65 L 80 65 Q 85 65 85 70 L 85 75 Q 85 80 80 80 L 20 80 Q 15 80 15 75 Z" fill="#BA9C7D"/>
+                <path d="M25 65 C 25 35 40 25 50 25 C 60 25 75 35 75 65" fill="#BA9C7D"/>
+                <rect x="25" y="55" width="50" height="6" fill="#111111"/>
+            </svg>
+        </div>
+
         <div class="footer-check"></div>
     </section>
 
