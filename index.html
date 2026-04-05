@@ -65,8 +65,10 @@
 
         /* 02: THE PITCH */
         #about { background-color: var(--black); }
-        .content-box { max-width: 800px; text-align: left; border-left: 5px solid var(--gum); padding-left: 30px; }
+        .content-box { max-width: 850px; text-align: left; border-left: 5px solid var(--gum); padding-left: 30px; }
         .content-box h2 { font-size: 3rem; margin-bottom: 20px; color: var(--gum); }
+        .content-box p { line-height: 1.6; font-size: 1.1rem; }
+        .highlight { color: var(--gum); font-weight: bold; }
 
         /* 03: THE LIBRARY */
         #apps { background-color: #1a1a1a; }
@@ -117,7 +119,8 @@
     <section id="about">
         <div class="content-box">
             <h2>We Are ToneDef Apps.</h2>
-            <p>Desert-born. SoCal rooted. We build the tools the big shops are too bored to make. Bring us your weird ideas—we specialize in vibe-coded solutions that hit different.</p>
+            <p>So-Cal rooted. Desert inspired. Rebels to the core. We build the tools the big shops are too bored to make. From <span class="highlight">Kovrd</span> protecting our elders to <span class="highlight">BTW</span> keeping our families and pets safe, we specialize in vibe-coded solutions that hit different.</p>
+            <p>We’re focused on impacting the world in a positive light—because honestly, what’s more Punk Rock than looking out for each other?</p>
         </div>
     </section>
 
@@ -126,28 +129,26 @@
         <div class="app-grid">
             
             <div class="app-card">
+                <h3>Kovrd</h3>
+                <p>Advanced protection against digital and telephone scams for the elderly.</p>
+                <div class="platform-bar">
+                    <a href="#" class="cta">Get for iOS</a>
+                    <a href="#" class="cta">Get for Android</a>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <h3>BTW</h3>
+                <p>Never forget a pet or child in your car again with smart proximity alerts.</p>
+                <div class="platform-bar">
+                    <a href="#" class="cta">Get for iOS</a>
+                    <a href="#" class="cta">Get for Android</a>
+                </div>
+            </div>
+
+            <div class="app-card">
                 <h3>Static Pulse</h3>
-                <p>Noise tracking for the offbeat professional.</p>
-                <div class="platform-bar">
-                    <a href="#" class="cta">Get for iOS</a>
-                    <a href="#" class="cta">Get for Android</a>
-                    <a href="#" class="cta web">Launch Web App</a>
-                </div>
-            </div>
-
-            <div class="app-card">
-                <h3>Void Build</h3>
-                <p>Minimalist planner for chaotic projects.</p>
-                <div class="platform-bar">
-                    <a href="#" class="cta">Get for iOS</a>
-                    <a href="#" class="cta">Get for Android</a>
-                    <a href="#" class="cta web">Launch Web App</a>
-                </div>
-            </div>
-
-            <div class="app-card">
-                <h3>Sharp Pleat</h3>
-                <p>Tailored asset organization for devs.</p>
+                <p>Minimalist noise tracking for the offbeat professional.</p>
                 <div class="platform-bar">
                     <a href="#" class="cta">Get for iOS</a>
                     <a href="#" class="cta">Get for Android</a>
@@ -173,11 +174,9 @@
 
         emailElement.addEventListener('click', function(e) {
             e.preventDefault();
-            // Lowercase standard for the mailto protocol
             window.location.href = `mailto:${emailUser.toLowerCase()}@${emailDomain.toLowerCase()}`;
         });
 
-        // Visual text uses CamelCase for brand clarity
         emailElement.textContent = `${emailUser}@${emailDomain}`;
     </script>
 
