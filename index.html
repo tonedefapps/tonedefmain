@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gum: #BA9C7D;
+            /* Adjusted gum color to better match the photo texture base */
+            --gum: #B39675;
             --black: #111111;
             --white: #FFFFFF;
             --gray: #CCCCCC;
@@ -16,13 +17,30 @@
         }
 
         * { box-sizing: border-box; }
+        
         body {
             background-color: var(--black);
             color: var(--white);
             font-family: var(--font-body);
             margin: 0;
             scroll-behavior: smooth;
+            position: relative;
         }
+
+        /* NOISE OVERLAY - Adds the grain across the entire site */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
         h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; margin: 0; }
         a { text-decoration: none; color: inherit; transition: 0.2s; }
 
@@ -35,7 +53,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 40px;
-            background: rgba(17,17,17,0.95);
+            background: rgba(17,17,17,0.92);
             border-bottom: 3px solid var(--gum);
             z-index: 100;
             backdrop-filter: blur(6px);
@@ -111,8 +129,8 @@
         .hero-logo {
             width: clamp(280px, 35vw, 450px);
             height: auto;
-            /* Optional shadow to give it that sticker depth */
-            filter: drop-shadow(5px 5px 0px rgba(0,0,0,0.1));
+            /* Subtle blend to soften the image edges into the noise-filtered background */
+            filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.05));
         }
 
         .hero-checker {
@@ -247,7 +265,7 @@
             #home { grid-template-columns: 1fr; padding: 90px 30px 0; }
             .hero-vbeat { 
                 padding: 40px 0;
-                justify-content: flex-start;
+                justify-content: center;
             }
         }
     </style>
@@ -257,10 +275,10 @@
 <nav>
     <div class="logo">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="48" fill="#BA9C7D"/>
+            <circle cx="50" cy="50" r="48" fill="#B39675"/>
             <circle cx="50" cy="50" r="41" fill="#111111"/>
-            <rect x="22" y="28" width="56" height="12" fill="#BA9C7D"/>
-            <rect x="44" y="40" width="12" height="32" fill="#BA9C7D"/>
+            <rect x="22" y="28" width="56" height="12" fill="#B39675"/>
+            <rect x="44" y="40" width="12" height="32" fill="#B39675"/>
         </svg>
         ToneDef.
     </div>
@@ -290,8 +308,8 @@
 
 <section id="about">
     <svg class="section-hat" viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="50" cy="54" rx="48" ry="11" fill="#BA9C7D"/>
-        <path d="M20,54 C20,30 18,14 50,8 C82,14 80,30 80,54 Z" fill="#BA9C7D"/>
+        <ellipse cx="50" cy="54" rx="48" ry="11" fill="#B39675"/>
+        <path d="M20,54 C20,30 18,14 50,8 C82,14 80,30 80,54 Z" fill="#B39675"/>
         <rect x="20" y="44" width="60" height="9" fill="#111111"/>
     </svg>
 
