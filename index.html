@@ -108,7 +108,12 @@
             justify-content: center;
             padding: 0 0 60px 60px;
         }
-        .hero-vbeat svg { width: clamp(180px, 24vw, 340px); height: auto; }
+        .hero-logo {
+            width: clamp(280px, 35vw, 450px);
+            height: auto;
+            /* Optional shadow to give it that sticker depth */
+            filter: drop-shadow(5px 5px 0px rgba(0,0,0,0.1));
+        }
 
         .hero-checker {
             grid-column: 1 / -1;
@@ -240,7 +245,10 @@
         @media (max-width: 768px) {
             nav { padding: 10px 20px; }
             #home { grid-template-columns: 1fr; padding: 90px 30px 0; }
-            .hero-vbeat { display: none; }
+            .hero-vbeat { 
+                padding: 40px 0;
+                justify-content: flex-start;
+            }
         }
     </style>
 </head>
@@ -272,13 +280,7 @@
     </div>
 
     <div class="hero-vbeat">
-        <svg viewBox="0 0 275 240" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="0" width="205" height="54" fill="#111111"/>
-            <rect x="78" y="54" width="54" height="186" fill="#111111"/>
-            <text x="218" y="72"  font-family="Anton, sans-serif" font-size="72" fill="#111111">A</text>
-            <text x="218" y="152" font-family="Anton, sans-serif" font-size="72" fill="#111111">P</text>
-            <text x="218" y="232" font-family="Anton, sans-serif" font-size="72" fill="#111111">S</text>
-        </svg>
+        <img src="logo.png" alt="ToneDef Apps Sticker" class="hero-logo">
     </div>
 
     <div class="hero-checker"></div>
