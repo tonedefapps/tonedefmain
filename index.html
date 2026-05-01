@@ -129,8 +129,8 @@
         .hero-logo {
             width: clamp(280px, 35vw, 450px);
             height: auto;
-            /* Subtle blend to soften the image edges into the noise-filtered background */
-            filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.05));
+            mask-image: radial-gradient(ellipse 80% 85% at center, black 50%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 85% at center, black 50%, transparent 75%);
         }
 
         .hero-checker {
