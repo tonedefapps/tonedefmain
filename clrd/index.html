@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLRD — Silence the Spam.</title>
+    <meta name="description" content="One tap clears spam-flagged calls and SMS threads from your history. No blocker, no cloud — just clean.">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1a3a8f;
+            --blue-deep: #0f2260;
+            --yellow: #f5c518;
+            --black: #111111;
+            --white: #ffffff;
+            --gray: #cccccc;
+            --gum: #B39675;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--gum);
+            color: var(--black);
+            font-family: 'Space Mono', monospace;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.08;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        h1, h2, h3 { margin: 0; }
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 40px;
+            background: var(--blue);
+            border-bottom: 3px solid var(--yellow);
+        }
+        .nav-back {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gum);
+        }
+        .nav-back:hover { color: var(--yellow); }
+        .nav-logo {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 1.6rem;
+            color: var(--yellow);
+            position: relative;
+            display: inline-block;
+        }
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            left: -4px; right: -4px;
+            top: 50%;
+            height: 3px;
+            background: var(--white);
+            transform: rotate(-12deg);
+        }
+        .nav-spacer { width: 120px; }
+
+        /* HERO */
+        .hero {
+            background: var(--blue);
+            padding: 70px 40px 90px;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--black);
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 16px;
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-family: 'Paytone One', sans-serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 24px;
+        }
+        .hero p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 1px;
+            max-width: 460px;
+            margin: 0 auto 40px;
+            line-height: 1.9;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--black);
+            font-family: 'Space Mono', monospace;
+            font-weight: bold;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 14px 36px;
+            border: 2px solid var(--yellow);
+        }
+        .hero-cta:hover { background: transparent; color: var(--yellow); }
+
+        /* CHECKERS */
+        .checker {
+            height: 28px;
+            background: repeating-conic-gradient(var(--blue) 0% 25%, var(--gum) 0% 50%) 0 0 / 28px 28px;
+        }
+        .checker-rev {
+            height: 28px;
+            background: repeating-conic-gradient(var(--gum) 0% 25%, var(--blue) 0% 50%) 0 0 / 28px 28px;
+        }
+
+        /* PREVIEW */
+        .preview {
+            padding: 80px 40px;
+            background: var(--gum);
+        }
+        .section-eyebrow {
+            text-align: center;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+        .preview h2 {
+            font-family: 'Paytone One', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--blue);
+        }
+        .phones {
+            display: flex;
+            gap: 48px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        .phone-wrap { display: flex; flex-direction: column; align-items: center; }
+
+        /* PHONE FRAME */
+        .phone {
+            width: 244px;
+            background: #1c1c1c;
+            border-radius: 38px;
+            padding: 14px;
+            box-shadow: 0 28px 64px rgba(0,0,0,0.35), 0 0 0 2px #2e2e2e;
+        }
+        .phone-screen {
+            background: var(--black);
+            border-radius: 26px;
+            overflow: hidden;
+        }
+        .phone-notch {
+            background: #1c1c1c;
+            height: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .phone-notch-pill {
+            width: 64px;
+            height: 9px;
+            background: #333;
+            border-radius: 5px;
+        }
+
+        .app-bar {
+            background: var(--blue);
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .app-bar-logo {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 21px;
+            color: var(--yellow);
+            position: relative;
+            display: inline-block;
+            line-height: 1;
+        }
+        .app-bar-logo::after {
+            content: '';
+            position: absolute;
+            left: -2px; right: -2px;
+            top: 50%;
+            height: 2px;
+            background: var(--white);
+            transform: rotate(-12deg);
+        }
+        .app-bar-dots {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            opacity: 0.5;
+        }
+        .app-bar-dots span {
+            display: block;
+            width: 3px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        .stats-strip {
+            background: var(--blue-deep);
+            padding: 8px 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .stat { text-align: center; }
+        .stat-val {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 15px;
+            color: var(--yellow);
+        }
+        .stat-label {
+            font-size: 7.5px;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .spam-list { padding: 2px 0; }
+        .spam-item {
+            display: flex;
+            align-items: center;
+            padding: 7px 14px;
+            gap: 10px;
+            border-bottom: 1px solid #1e1e1e;
+        }
+        .spam-item.unchecked .spam-check {
+            background: #2a2a2a;
+            color: #555;
+        }
+        .spam-check {
+            width: 15px;
+            height: 15px;
+            background: var(--yellow);
+            border-radius: 3px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: var(--black);
+            font-weight: bold;
+        }
+        .spam-info { flex: 1; min-width: 0; }
+        .spam-name {
+            font-size: 10px;
+            color: var(--white);
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .spam-item.unchecked .spam-name { color: rgba(255,255,255,0.35); }
+        .spam-meta {
+            font-size: 7.5px;
+            color: rgba(255,255,255,0.35);
+        }
+        .spam-badge {
+            font-size: 7px;
+            background: rgba(245,197,24,0.12);
+            color: var(--yellow);
+            padding: 2px 5px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+        }
+        .spam-item.unchecked .spam-badge {
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.25);
+        }
+
+        .bottom-bar {
+            padding: 10px 14px 14px;
+            background: #0d0d0d;
+        }
+        .clear-btn {
+            background: var(--yellow);
+            color: var(--black);
+            font-family: 'Paytone One', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        .auto-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 9px 0 0;
+        }
+        .auto-label {
+            font-size: 8.5px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .toggle {
+            width: 30px;
+            height: 16px;
+            background: var(--yellow);
+            border-radius: 8px;
+            position: relative;
+        }
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 11px;
+            height: 11px;
+            background: var(--black);
+            border-radius: 50%;
+            top: 2.5px;
+            left: 16px;
+        }
+
+        /* CLEARED SCREEN */
+        .cleared-body {
+            padding: 28px 14px 20px;
+            text-align: center;
+        }
+        .cleared-circle {
+            width: 52px;
+            height: 52px;
+            background: var(--yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--black);
+            font-family: 'Paytone One', sans-serif;
+        }
+        .cleared-title {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 32px;
+            color: var(--yellow);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .cleared-sub {
+            font-size: 8.5px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .cleared-big {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 48px;
+            color: var(--white);
+            line-height: 1;
+        }
+        .cleared-big-label {
+            font-size: 8px;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 22px;
+        }
+        .view-link {
+            font-size: 9px;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: underline;
+        }
+
+        .phone-caption {
+            margin-top: 16px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--blue);
+            font-weight: bold;
+        }
+
+        /* FEATURES */
+        .features {
+            background: var(--blue);
+            padding: 80px 40px;
+            color: var(--white);
+        }
+        .features h2 {
+            font-family: 'Paytone One', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--yellow);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--yellow);
+            border: 2px solid var(--yellow);
+        }
+        .feature-card {
+            background: var(--blue);
+            padding: 30px 26px;
+        }
+        .feature-rule { width: 22px; height: 3px; background: var(--yellow); margin-bottom: 14px; }
+        .feature-title {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            color: var(--yellow);
+            margin-bottom: 8px;
+        }
+        .feature-desc {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.75;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            padding: 40px;
+            text-align: center;
+            border-top: 3px solid var(--yellow);
+        }
+        footer a {
+            color: var(--gum);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        footer a:hover { color: var(--yellow); }
+
+        @media (max-width: 640px) {
+            nav { padding: 14px 20px; }
+            .nav-spacer { width: 80px; }
+            .hero { padding: 50px 24px 70px; }
+            .preview { padding: 60px 24px; }
+            .features { padding: 60px 24px; }
+            footer { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/" class="nav-back">← ToneDef Apps</a>
+    <div class="nav-logo">CLRD</div>
+    <div class="nav-spacer"></div>
+</nav>
+
+<section class="hero">
+    <div class="hero-badge">Android &nbsp;//&nbsp; Coming to the Play Store</div>
+    <h1>Silence<br>the Spam.</h1>
+    <p>One tap clears spam-flagged calls and SMS threads from your history. No blocker, no cloud — just clean.</p>
+    <a href="mailto:support@tonedefapps.com?subject=CLRD%20Android%20Early%20Access&body=I%27d%20like%20early%20access%20to%20CLRD%20for%20Android." class="hero-cta">Request Early Access</a>
+</section>
+
+<div class="checker"></div>
+
+<section class="preview">
+    <p class="section-eyebrow">App Preview</p>
+    <h2>See It in Action</h2>
+    <div class="phones">
+
+        <!-- Screen 1: Main spam list -->
+        <div class="phone-wrap">
+            <div class="phone">
+                <div class="phone-screen">
+                    <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+                    <div class="app-bar">
+                        <div class="app-bar-logo">CLRD</div>
+                        <div class="app-bar-dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <div class="stats-strip">
+                        <div class="stat">
+                            <div class="stat-val">14</div>
+                            <div class="stat-label">Spam Found</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-val">47</div>
+                            <div class="stat-label">Cleared / Mo</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-val">0:00</div>
+                            <div class="stat-label">Avg Duration</div>
+                        </div>
+                    </div>
+                    <div class="spam-list">
+                        <div class="spam-item">
+                            <div class="spam-check">✓</div>
+                            <div class="spam-info">
+                                <div class="spam-name">Spam Risk</div>
+                                <div class="spam-meta">+1 (949) 555-0182 &nbsp;·&nbsp; 0:00</div>
+                            </div>
+                            <div class="spam-badge">Spam</div>
+                        </div>
+                        <div class="spam-item">
+                            <div class="spam-check">✓</div>
+                            <div class="spam-info">
+                                <div class="spam-name">Unknown</div>
+                                <div class="spam-meta">+1 (213) 555-0044 &nbsp;·&nbsp; 0:00</div>
+                            </div>
+                            <div class="spam-badge">Spam</div>
+                        </div>
+                        <div class="spam-item">
+                            <div class="spam-check">✓</div>
+                            <div class="spam-info">
+                                <div class="spam-name">Telemarketer</div>
+                                <div class="spam-meta">+1 (818) 555-0391 &nbsp;·&nbsp; 0:00</div>
+                            </div>
+                            <div class="spam-badge">Spam</div>
+                        </div>
+                        <div class="spam-item">
+                            <div class="spam-check">✓</div>
+                            <div class="spam-info">
+                                <div class="spam-name">Spam Risk</div>
+                                <div class="spam-meta">+1 (310) 555-0257 &nbsp;·&nbsp; 0:00</div>
+                            </div>
+                            <div class="spam-badge">Spam</div>
+                        </div>
+                        <div class="spam-item unchecked">
+                            <div class="spam-check">✓</div>
+                            <div class="spam-info">
+                                <div class="spam-name">Spam Risk</div>
+                                <div class="spam-meta">+1 (714) 555-0119 &nbsp;·&nbsp; 0:00</div>
+                            </div>
+                            <div class="spam-badge">Spam</div>
+                        </div>
+                    </div>
+                    <div class="bottom-bar">
+                        <div class="clear-btn">Clear 14 Entries</div>
+                        <div class="auto-row">
+                            <span class="auto-label">Auto-clean on launch</span>
+                            <div class="toggle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-caption">Spam List</div>
+        </div>
+
+        <!-- Screen 2: Cleared state -->
+        <div class="phone-wrap">
+            <div class="phone">
+                <div class="phone-screen">
+                    <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+                    <div class="app-bar">
+                        <div class="app-bar-logo">CLRD</div>
+                    </div>
+                    <div class="cleared-body">
+                        <div class="cleared-circle">✓</div>
+                        <div class="cleared-title">Cleared.</div>
+                        <div class="cleared-sub">14 entries removed</div>
+                        <div class="cleared-big">48</div>
+                        <div class="cleared-big-label">Cleared this month</div>
+                        <div class="view-link">View Normal Calls →</div>
+                    </div>
+                    <div class="bottom-bar">
+                        <div class="auto-row">
+                            <span class="auto-label">Auto-clean on launch</span>
+                            <div class="toggle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-caption">After Clear</div>
+        </div>
+
+    </div>
+</section>
+
+<div class="checker-rev"></div>
+
+<section class="features">
+    <h2>Built Different.</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-rule"></div>
+            <div class="feature-title">One Tap, Done</div>
+            <div class="feature-desc">Spam pre-selected on launch. Tap clear. Walk away. No menus, no settings maze.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-rule"></div>
+            <div class="feature-title">Calls + SMS</div>
+            <div class="feature-desc">Wipes spam from your call log and the matching SMS threads in one shot.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-rule"></div>
+            <div class="feature-title">Fully Local</div>
+            <div class="feature-desc">Zero network calls. Nothing leaves your device. No account, no cloud, no data sold.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-rule"></div>
+            <div class="feature-title">Auto-Clean</div>
+            <div class="feature-desc">Toggle it on and CLRD silently clears spam every time you open it. Set and forget.</div>
+        </div>
+    </div>
+</section>
+
+<div class="checker"></div>
+
+<footer>
+    <a href="/">← Back to ToneDef Apps</a>
+</footer>
+
+</body>
+</html>
