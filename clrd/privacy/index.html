@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLRD — Privacy Policy</title>
+    <meta name="description" content="CLRD privacy policy. CLRD is a fully local Android app — no data ever leaves your device.">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1a3a8f;
+            --blue-deep: #0f2260;
+            --yellow: #f5c518;
+            --black: #111111;
+            --white: #ffffff;
+            --gray: #cccccc;
+            --gum: #B39675;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--gum);
+            color: var(--black);
+            font-family: 'Space Mono', monospace;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.08;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 40px;
+            background: var(--blue);
+            border-bottom: 3px solid var(--yellow);
+        }
+        .nav-back {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gum);
+        }
+        .nav-back:hover { color: var(--yellow); }
+        .nav-logo {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 1.6rem;
+            color: var(--yellow);
+            position: relative;
+            display: inline-block;
+        }
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            left: -4px; right: -4px;
+            top: 50%;
+            height: 3px;
+            background: var(--white);
+            transform: rotate(-12deg);
+        }
+        .nav-spacer { width: 120px; }
+
+        .checker {
+            height: 28px;
+            background: repeating-conic-gradient(var(--blue) 0% 25%, var(--gum) 0% 50%) 0 0 / 28px 28px;
+        }
+
+        .hero {
+            background: var(--blue);
+            padding: 60px 40px 70px;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-eyebrow {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-family: 'Paytone One', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            text-transform: uppercase;
+            color: var(--yellow);
+            margin-bottom: 14px;
+        }
+        .hero-sub {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+        }
+
+        .content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 64px 40px 80px;
+        }
+
+        .section {
+            margin-bottom: 52px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: var(--blue);
+            color: var(--yellow);
+            font-family: 'Paytone One', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 4px 12px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 0.8rem;
+            line-height: 2;
+            color: rgba(0,0,0,0.75);
+            margin-bottom: 14px;
+        }
+
+        p:last-child { margin-bottom: 0; }
+
+        ul {
+            list-style: none;
+            margin: 12px 0 14px;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 0.8rem;
+            line-height: 2;
+            color: rgba(0,0,0,0.75);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: var(--blue);
+            color: var(--white);
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+
+        .highlight-box p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.78rem;
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: var(--yellow);
+            font-family: 'Paytone One', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .divider {
+            height: 3px;
+            background: var(--blue);
+            margin: 40px 0;
+            opacity: 0.15;
+        }
+
+        .updated {
+            font-size: 0.7rem;
+            color: rgba(0,0,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 48px;
+        }
+
+        footer {
+            background: var(--black);
+            padding: 40px;
+            text-align: center;
+            border-top: 3px solid var(--yellow);
+        }
+        footer a {
+            color: var(--gum);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        footer a:hover { color: var(--yellow); }
+
+        @media (max-width: 640px) {
+            nav { padding: 14px 20px; }
+            .nav-spacer { width: 80px; }
+            .hero { padding: 50px 24px 60px; }
+            .content { padding: 48px 24px 64px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/clrd/" class="nav-back">← CLRD</a>
+    <div class="nav-logo">CLRD</div>
+    <div class="nav-spacer"></div>
+</nav>
+
+<section class="hero">
+    <p class="hero-eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="hero-sub">CLRD is a fully local app. Nothing you do in it ever leaves your phone.</p>
+</section>
+
+<div class="checker"></div>
+
+<div class="content">
+
+    <p class="updated">Last updated: May 15, 2026</p>
+
+    <div class="highlight-box">
+        <p><strong>The short version:</strong> CLRD reads your call log, SMS inbox, and optionally your contacts — all on your device, never transmitted anywhere. It writes only when you explicitly delete something. We have no servers, no analytics, no accounts, and no interest in your data.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-label">Overview</div>
+        <h2>What CLRD Does</h2>
+        <p>CLRD is a call log and SMS cleanup utility for Android. It identifies spam-flagged and unwanted call log entries, surfaces matching SMS threads from the same numbers, and deletes them when you say so. That's the whole app.</p>
+        <p>Developer: Scott Fowler / ToneDef Apps<br>Contact: <a href="mailto:support@tonedefapps.com" style="color:var(--blue);text-decoration:underline;">support@tonedefapps.com</a></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">Data Access</div>
+        <h2>What We Access and Why</h2>
+
+        <p><strong>Call Log</strong> (READ_CALL_LOG, WRITE_CALL_LOG)</p>
+        <p>CLRD reads your call log to identify entries flagged as spam by the Android platform — calls with a block reason set, calls rejected or screened automatically, or calls with zero duration from unknown numbers. These entries are displayed in a review list. If you tap NUKE, WRITE_CALL_LOG is used to delete the entries you selected. Nothing is read for any other purpose.</p>
+
+        <p><strong>SMS / MMS</strong> (READ_SMS, WRITE_SMS)</p>
+        <p>After identifying spam-flagged call log entries, CLRD reads your SMS inbox to find message threads from the same phone numbers. Those threads are displayed alongside the call entries so you can clear both in one action. WRITE_SMS is used only when you explicitly delete an SMS thread. Message content is never read — only the sender's phone number is used for matching.</p>
+
+        <p><strong>Contacts</strong> (READ_CONTACTS — optional)</p>
+        <p>If you grant this permission, CLRD uses it to display a contact name next to a phone number in the review list (e.g., "John Smith" instead of a raw number). The app works fully without this permission — numbers are shown as-is if contacts access is not granted. No contact data is stored or used for any other purpose.</p>
+
+        <p><strong>Ghost Mode — Contact List</strong> (Premium feature, READ_CONTACTS)</p>
+        <p>Ghost Mode is an optional paid upgrade that lets you designate specific contacts whose call log entries are silently deleted whenever CLRD opens. The phone numbers associated with those contacts are stored locally on your device using Android's DataStore — an on-device storage mechanism. These numbers are never transmitted off your device, never uploaded to any server, and are deleted immediately if you remove a contact from the Ghost Mode list or uninstall the app.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">Purchases</div>
+        <h2>Billing and Payments</h2>
+        <p>Ghost Mode is available as a one-time in-app purchase ($4.99) processed entirely by Google Play. CLRD never sees your payment information. The only signal CLRD receives from Google Play is a yes/no confirmation that the purchase was completed. That confirmation is stored locally on your device and used only to unlock the Ghost Mode feature.</p>
+        <p>We do not retain any purchase records. If you need a receipt or refund, contact Google Play directly.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">What We Don't Do</div>
+        <h2>Data We Never Collect</h2>
+        <ul>
+            <li>No analytics or usage tracking of any kind</li>
+            <li>No crash reporting services</li>
+            <li>No advertising SDKs</li>
+            <li>No accounts, login, or user profiles</li>
+            <li>No network requests — CLRD has no internet permission</li>
+            <li>No data stored on external servers (we have none)</li>
+            <li>No data sold, shared, or licensed to third parties</li>
+        </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">Retention</div>
+        <h2>How Long Data Is Kept</h2>
+        <p>CLRD stores one thing locally: the list of phone numbers you've added to Ghost Mode (if you use it). This data lives in Android's DataStore on your device and is controlled entirely by you. You can remove individual numbers from within the app, or uninstall CLRD to remove all stored data.</p>
+        <p>No other data is retained between app sessions. When CLRD closes, nothing persists except your Ghost Mode list and your Auto-Clean preference toggle (on/off).</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">Your Rights</div>
+        <h2>Control and Deletion</h2>
+        <p>Because CLRD stores nothing on external servers, there is nothing for us to delete on your behalf. All data CLRD touches lives on your device and is under your control at all times.</p>
+        <ul>
+            <li>Remove Ghost Mode contacts: in-app via the Ghost Mode screen</li>
+            <li>Revoke permissions: Android Settings → Apps → CLRD → Permissions</li>
+            <li>Delete all CLRD data: uninstall the app</li>
+        </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">Children</div>
+        <h2>Age</h2>
+        <p>CLRD is not directed at children under 13. We do not knowingly collect any information from children. Given that CLRD collects no information from anyone, this is somewhat academic — but we're saying it anyway because we have to.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">Changes</div>
+        <h2>Policy Updates</h2>
+        <p>If we ever change this policy in a meaningful way, we'll update the "Last updated" date at the top of this page. Given that CLRD's entire premise is local-only operation, meaningful changes are unlikely. We're not planning to add servers, accounts, or analytics — that would defeat the point.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">Contact</div>
+        <h2>Questions</h2>
+        <p>If you have questions about this policy or anything related to CLRD, reach out at <a href="mailto:support@tonedefapps.com" style="color:var(--blue);text-decoration:underline;">support@tonedefapps.com</a>.</p>
+    </div>
+
+</div>
+
+<div class="checker"></div>
+
+<footer>
+    <a href="/clrd/">← Back to CLRD</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="/">ToneDef Apps</a>
+</footer>
+
+</body>
+</html>
