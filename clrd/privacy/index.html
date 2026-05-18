@@ -235,13 +235,13 @@
     <p class="updated">Last updated: May 15, 2026</p>
 
     <div class="highlight-box">
-        <p><strong>The short version:</strong> CLRD reads your call log, SMS inbox, and optionally your contacts — all on your device, never transmitted anywhere. It writes only when you explicitly delete something. We have no servers, no analytics, no accounts, and no interest in your data.</p>
+        <p><strong>The short version:</strong> CLRD reads your call log and optionally your contacts — all on your device, never transmitted anywhere. It writes only when you explicitly delete something. We have no servers, no analytics, no accounts, and no interest in your data.</p>
     </div>
 
     <div class="section">
         <div class="section-label">Overview</div>
         <h2>What CLRD Does</h2>
-        <p>CLRD is a call log and SMS cleanup utility for Android. It identifies spam-flagged and unwanted call log entries, surfaces matching SMS threads from the same numbers, and deletes them when you say so. That's the whole app.</p>
+        <p>CLRD is a call log cleanup utility for Android. It identifies spam-flagged and unwanted call log entries and deletes them when you say so. That's the whole app.</p>
         <p>Developer: Scott Fowler / ToneDef Apps<br>Contact: <a href="mailto:support@tonedefapps.com" style="color:var(--blue);text-decoration:underline;">support@tonedefapps.com</a></p>
     </div>
 
@@ -253,9 +253,6 @@
 
         <p><strong>Call Log</strong> (READ_CALL_LOG, WRITE_CALL_LOG)</p>
         <p>CLRD reads your call log to identify entries flagged as spam by the Android platform — calls with a block reason set, calls rejected or screened automatically, or calls with zero duration from unknown numbers. These entries are displayed in a review list. If you tap NUKE, WRITE_CALL_LOG is used to delete the entries you selected. Nothing is read for any other purpose.</p>
-
-        <p><strong>SMS / MMS</strong> (READ_SMS, WRITE_SMS)</p>
-        <p>After identifying spam-flagged call log entries, CLRD reads your SMS inbox to find message threads from the same phone numbers. Those threads are displayed alongside the call entries so you can clear both in one action. WRITE_SMS is used only when you explicitly delete an SMS thread. Message content is never read — only the sender's phone number is used for matching.</p>
 
         <p><strong>Contacts</strong> (READ_CONTACTS — optional)</p>
         <p>If you grant this permission, CLRD uses it to display a contact name next to a phone number in the review list (e.g., "John Smith" instead of a raw number). The app works fully without this permission — numbers are shown as-is if contacts access is not granted. No contact data is stored or used for any other purpose.</p>
