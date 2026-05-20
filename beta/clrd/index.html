@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLRD — Join the Android Beta</title>
+    <meta name="description" content="Sign up to beta test CLRD for Android — one tap clears spam-flagged calls and SMS from your history.">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDHJ7S4VDM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YDHJ7S4VDM');
+    </script>
+    <style>
+        :root {
+            --gum: #a48661;
+            --black: #111111;
+            --white: #FFFFFF;
+            --gray: #CCCCCC;
+            --font-head: 'Anton', sans-serif;
+            --font-body: 'Space Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.06;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 40px;
+            border-bottom: 3px solid var(--gum);
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--gum);
+            text-decoration: none;
+        }
+
+        .back-link {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gray);
+            text-decoration: none;
+        }
+        .back-link:hover { color: var(--gum); }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 24px;
+        }
+
+        .top-rule {
+            width: 48px;
+            height: 5px;
+            background: var(--gum);
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            font-family: var(--font-head);
+            font-size: clamp(3rem, 10vw, 6rem);
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gum);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .description {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 480px;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        input {
+            background: #1c1c1c;
+            border: 1px solid #333;
+            border-top-color: var(--gum);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            padding: 14px 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus { border-color: var(--gum); }
+        input::placeholder { color: #555; }
+
+        .helper {
+            font-size: 0.65rem;
+            color: #666;
+            letter-spacing: 0;
+            text-transform: none;
+            margin-top: -4px;
+        }
+
+        button[type="submit"] {
+            margin-top: 8px;
+            padding: 16px;
+            background: var(--gum);
+            color: var(--black);
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: var(--white);
+        }
+
+        .checker {
+            height: 28px;
+            background: repeating-conic-gradient(var(--gum) 0% 25%, var(--black) 0% 50%) 0 0 / 28px 28px;
+        }
+
+        @media (max-width: 480px) {
+            nav { padding: 14px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">ToneDef.</a>
+    <a href="/#apps" class="back-link">← Back</a>
+</nav>
+
+<main>
+    <div class="top-rule"></div>
+    <h1>CLRD</h1>
+    <p class="tagline">Android Beta // Join the Test</p>
+    <p class="description">Silence the spam. One tap clears spam-flagged calls and SMS threads from your history — no blocker, no cloud, just clean. iOS is live; help us bring it to Android.</p>
+
+    <form action="https://formspree.io/f/xbdbdzqr" method="POST">
+        <input type="hidden" name="app" value="CLRD">
+
+        <label>
+            Your Name
+            <input type="text" name="name" placeholder="First and last" required>
+        </label>
+
+        <label>
+            Email Address
+            <input type="email" name="email" placeholder="you@example.com" required>
+            <span class="helper">We'll send your beta invite here.</span>
+        </label>
+
+        <label>
+            Google Play Email
+            <input type="email" name="google_play_email" placeholder="your.google.account@gmail.com" required>
+            <span class="helper">The Google account linked to your Play Store — may differ from your contact email.</span>
+        </label>
+
+        <button type="submit">Request Beta Access</button>
+    </form>
+</main>
+
+<div class="checker"></div>
+
+</body>
+</html>
