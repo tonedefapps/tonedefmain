@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLRD — About</title>
+    <meta name="description" content="CLRD is a call log and SMS cleanup app for Android. Built by ToneDef Apps.">
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDHJ7S4VDM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YDHJ7S4VDM');
+    </script>
+    <style>
+        :root {
+            --blue: #14307a;
+            --blue-deep: #0b1e52;
+            --yellow: #f8d040;
+            --black: #111111;
+            --white: #ffffff;
+            --gray: #cccccc;
+            --gum: #B39675;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--gum);
+            color: var(--black);
+            font-family: 'Space Mono', monospace;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.08;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 40px;
+            background: var(--blue);
+            border-bottom: 3px solid var(--yellow);
+        }
+        .nav-back {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gum);
+        }
+        .nav-back:hover { color: var(--yellow); }
+        .nav-logo {
+            font-family: 'Zilla Slab', serif;
+            font-size: 1.6rem;
+            color: var(--yellow);
+        }
+        .nav-spacer { width: 120px; }
+
+        .checker {
+            height: 28px;
+            background: repeating-conic-gradient(var(--blue) 0% 25%, var(--gum) 0% 50%) 0 0 / 28px 28px;
+        }
+        .checker-rev {
+            height: 28px;
+            background: repeating-conic-gradient(var(--gum) 0% 25%, var(--blue) 0% 50%) 0 0 / 28px 28px;
+        }
+
+        .hero {
+            background: var(--blue);
+            padding: 60px 40px 70px;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-eyebrow {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-family: 'Zilla Slab', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            text-transform: uppercase;
+            color: var(--yellow);
+            margin-bottom: 14px;
+        }
+        .hero-sub {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 64px 40px 80px;
+        }
+
+        .section { margin-bottom: 52px; }
+
+        .section-label {
+            display: inline-block;
+            background: var(--blue);
+            color: var(--yellow);
+            font-family: 'Zilla Slab', serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 4px 12px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            font-family: 'Zilla Slab', serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 0.8rem;
+            line-height: 2;
+            color: rgba(0,0,0,0.75);
+            margin-bottom: 14px;
+        }
+        p:last-child { margin-bottom: 0; }
+
+        ul {
+            list-style: none;
+            margin: 12px 0 14px;
+            padding: 0;
+        }
+        ul li {
+            font-size: 0.8rem;
+            line-height: 2;
+            color: rgba(0,0,0,0.75);
+            padding-left: 20px;
+            position: relative;
+        }
+        ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: var(--blue);
+            color: var(--white);
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+        .highlight-box p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.78rem;
+            margin-bottom: 0;
+        }
+        .highlight-box strong {
+            color: var(--yellow);
+            font-family: 'Zilla Slab', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .divider {
+            height: 3px;
+            background: var(--blue);
+            margin: 40px 0;
+            opacity: 0.15;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px;
+            background: var(--blue);
+            border: 2px solid var(--blue);
+            margin: 24px 0;
+        }
+        .feature-card {
+            background: var(--gum);
+            padding: 24px 22px;
+        }
+        .feature-rule { width: 20px; height: 3px; background: var(--blue); margin-bottom: 12px; }
+        .feature-title {
+            font-family: 'Zilla Slab', serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 6px;
+        }
+        .feature-desc {
+            font-size: 0.75rem;
+            color: rgba(0,0,0,0.6);
+            line-height: 1.75;
+        }
+
+        footer {
+            background: var(--black);
+            padding: 40px;
+            text-align: center;
+            border-top: 3px solid var(--yellow);
+        }
+        footer a {
+            color: var(--gum);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        footer a:hover { color: var(--yellow); }
+
+        @media (max-width: 640px) {
+            nav { padding: 14px 20px; }
+            .nav-spacer { width: 80px; }
+            .hero { padding: 50px 24px 60px; }
+            .content { padding: 48px 24px 64px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/clrd/" class="nav-back">← CLRD</a>
+    <div class="nav-logo">CLRD</div>
+    <div class="nav-spacer"></div>
+</nav>
+
+<section class="hero">
+    <p class="hero-eyebrow">About</p>
+    <h1>What Is CLRD?</h1>
+    <p class="hero-sub">A call log and SMS cleaner for Android. No blocker, no cloud, no nonsense — just clean.</p>
+</section>
+
+<div class="checker"></div>
+
+<div class="content">
+
+    <div class="section">
+        <div class="section-label">The Problem</div>
+        <h2>Your Call Log Is a Mess</h2>
+        <p>Spam calls don't just ring you — they leave a trail. Every rejected call, every screened robocall, every zero-second "Spam Risk" entry stays in your call log forever unless you delete it manually, one at a time. Nobody does that.</p>
+        <p>CLRD does it for you.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">The App</div>
+        <h2>What CLRD Does</h2>
+        <p>CLRD scans your call log on launch, pre-selects the junk, and lets you nuke it in one tap. You can review before you delete, deselect anything you want to keep, or flip on Auto-Clean and never think about it again.</p>
+        <p>The SMS scanner works the same way — CLRD shows you your message threads, you mark the ones you want gone, and it clears them. You can even send a STOP reply before deleting if you want to opt out of a sender's list.</p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-rule"></div>
+                <div class="feature-title">One Tap</div>
+                <div class="feature-desc">Spam pre-selected. Tap NUKE. Done. No menus, no settings maze.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-rule"></div>
+                <div class="feature-title">Auto-Clean</div>
+                <div class="feature-desc">Toggle it on and CLRD silently clears spam every time you open it.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-rule"></div>
+                <div class="feature-title">Blocklist</div>
+                <div class="feature-desc">Add specific numbers and CLRD wipes their entries silently on every launch.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-rule"></div>
+                <div class="feature-title">Ghost Mode</div>
+                <div class="feature-desc">Premium. Same as the Blocklist but for contacts you never want to see in your call history at all.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-rule"></div>
+                <div class="feature-title">SMS Cleanup</div>
+                <div class="feature-desc">Scan, review, and delete SMS/MMS threads. Send STOP replies before clearing.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-rule"></div>
+                <div class="feature-title">Fully Local</div>
+                <div class="feature-desc">No network calls. Nothing leaves your device. No account, no cloud, no data sold.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">Platform</div>
+        <h2>Android Only (For Now)</h2>
+        <p>CLRD is Android-only. iOS does not give third-party apps access to call history or SMS data — the hooks simply don't exist on Apple's platform. This isn't a compromise, it's just the reality of what Apple allows. CLRD exists because Android lets developers actually build things like this.</p>
+        <p>CLRD is available on the Google Play Store.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">Pricing</div>
+        <h2>Free to Use. One Optional Upgrade.</h2>
+        <p>CLRD is free. The core call log cleaner, SMS scanner, Auto-Clean, Blocklist, and all filters are included at no cost.</p>
+        <p>Ghost Mode — which silently removes call log entries from specific numbers on every launch — is a one-time in-app purchase of <strong>$4.99</strong>, processed by Google Play. No subscription, no trial, no bullshit.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <div class="section-label">The Builder</div>
+        <h2>Made by ToneDef Apps</h2>
+        <p>ToneDef Apps is a one-person indie shop based in Southern California, building tools the big shops are too bored to make. CLRD came from a simple frustration: call logs filling up with junk and no clean way to bulk-clear them. So we built one.</p>
+        <p>Questions, feedback, or bug reports: <a href="mailto:support@tonedefapps.com" style="color:var(--blue);text-decoration:underline;">support@tonedefapps.com</a></p>
+    </div>
+
+</div>
+
+<div class="checker-rev"></div>
+
+<footer>
+    <a href="/clrd/">← Back to CLRD</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="/clrd/privacy/">Privacy Policy</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="/">ToneDef Apps</a>
+</footer>
+
+</body>
+</html>
