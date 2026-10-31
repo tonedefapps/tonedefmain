@@ -212,6 +212,8 @@
             transition: background 0.2s;
         }
         .app-card:hover { background: #1c1c1c; }
+        /* fills any leftover cells in the last row so the gum grid lines stay clean */
+        .app-grid::after { content: ""; background: var(--black); grid-column: span 2; }
         .card-rule { width: 28px; height: 4px; background: var(--gum); margin-bottom: 20px; }
         .app-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
         .app-card h3 a:hover { color: var(--gum); }
@@ -274,6 +276,7 @@
                 justify-content: center;
             }
             .app-grid { grid-template-columns: repeat(1, 1fr); }
+            .app-grid::after { display: none; }
         }
     </style>
 </head>
@@ -331,7 +334,7 @@
     <h2>The Library</h2>
     <p class="section-sub">What we're building // what's coming</p>
     <div class="app-grid">
-        <div class="app-card" style="grid-column: 1 / -1;">
+        <div class="app-card">
             <div class="card-rule"></div>
             <h3><a href="/getwavedin">Waved In</a></h3>
             <p>AI is the bouncer. We're the guest list. Verified jobs on your schedule, honest odds, and resumes built from your real experience.</p>
