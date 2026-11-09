@@ -97,6 +97,7 @@
             background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 40px; }
         input:focus, select:focus, textarea:focus { border-color: var(--teal); }
         input::placeholder, textarea::placeholder { color: #55656F; }
+        .fixed { font-size: .9rem; padding: 12px 14px; border: 2px dashed var(--line); color: var(--cream); }
         .pay { display: grid; grid-template-columns: 1fr 130px; gap: 10px; }
         .pay .money { position: relative; }
         .pay .money span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); }
@@ -172,7 +173,7 @@
             <span class="badge">Hand-run beta</span>
             <img class="wm" src="../assets/wordmark.svg" alt="Get Waved In" width="930" height="250">
             <h1>Get on the <em>guest list.</em></h1>
-            <p class="lede">The app is still in the shop, so for now a real person runs your search. Tell us what you're after, drop your resume, and your first ranked list shows up in your inbox.</p>
+            <p class="lede">The app is still in the shop, so for now a real person runs your search. Tell us what you're after, drop your resume, and a fresh ranked list lands in your inbox every 4 days.</p>
         </div>
         <div class="bouncer" aria-hidden="true">
             <img class="before" src="../assets/mark-before.svg" alt="">
@@ -183,7 +184,7 @@
     <div class="how">
         <div><b>Two minutes</b>Fill this out once. Only the starred questions are required.</div>
         <div><b>A few days</b>We scrub the boards and verify every listing on the employer's own site.</div>
-        <div><b>Your list</b>Ranked green, yellow, red, with tailored docs for your best shots.</div>
+        <div><b>Every 4 days</b>A ranked list, green, yellow, red, with tailored docs for your best shots.</div>
     </div>
 
     <form id="intake" novalidate>
@@ -226,9 +227,9 @@
                         <option>2 to 5 years</option>
                         <option>5+ years</option>
                     </select></label>
-                <div class="field"><span class="lbl">Lowest pay you'd take</span>
+                <div class="field"><span class="lbl">Lowest pay you'd take <i>*</i></span>
                     <div class="pay">
-                        <div class="money"><span>$</span><input type="number" name="payFloor" min="0" step="0.5" inputmode="decimal" placeholder="22" aria-label="Lowest pay"></div>
+                        <div class="money"><span>$</span><input type="number" name="payFloor" min="0" step="0.5" inputmode="decimal" placeholder="22" aria-label="Lowest pay" required></div>
                         <select name="payUnit" aria-label="Pay period"><option>per hour</option><option>per year</option></select>
                     </div></div>
             </div>
@@ -242,13 +243,18 @@
                         <option>Anywhere in the metro</option>
                         <option>Remote only</option>
                     </select></label>
-                <label class="field"><span class="lbl">How often do you want a list?</span>
-                    <select name="cadence">
-                        <option>Once a week</option>
-                        <option selected>Twice a week</option>
-                        <option>Every other day</option>
-                    </select></label>
+                <div class="field"><span class="lbl">How often you'll hear from us</span>
+                    <div class="fixed">A fresh list every 4 days</div>
+                    <input type="hidden" name="cadence" value="Every 4 days"></div>
             </div>
+            <div class="field"><span class="lbl">Kind of workplace</span>
+                <div class="chips">
+                    <label class="chip"><input type="checkbox" name="workplace" value="Office or desk"><span>Office or desk</span></label>
+                    <label class="chip"><input type="checkbox" name="workplace" value="Hospital or clinic"><span>Hospital or clinic</span></label>
+                    <label class="chip"><input type="checkbox" name="workplace" value="Customer facing"><span>Customer facing</span></label>
+                    <label class="chip"><input type="checkbox" name="workplace" value="On my feet"><span>On my feet</span></label>
+                    <label class="chip"><input type="checkbox" name="workplace" value="Out in the field"><span>Out in the field</span></label>
+                </div></div>
             <div class="field"><span class="lbl">Work setting</span>
                 <div class="chips">
                     <label class="chip"><input type="checkbox" name="setting" value="On-site"><span>On-site</span></label>
@@ -302,7 +308,7 @@
 
     <section class="thanks" id="thanks" tabindex="-1">
         <h2>You're <em>on the list.</em></h2>
-        <p>Got it, <span id="thanksName">friend</span>. We'll run your first search by hand and email your ranked list within a few days, with tailored docs for your best matches.</p>
+        <p>Got it, <span id="thanksName">friend</span>. We'll run your first search by hand and email your ranked list within a few days, then a fresh one every 4 days, with tailored docs for your best matches.</p>
         <p>Want to change something? Reply to that email and we'll update it.</p>
         <p><a href="../">&larr; Back to Waved In</a></p>
     </section>
@@ -355,7 +361,7 @@ form.addEventListener('submit', async e => {
     e.preventDefault();
     status.className = 'status'; status.textContent = '';
     const fd = new FormData(form);
-    for (const n of ['name', 'email', 'location', 'work']) {
+    for (const n of ['name', 'email', 'location', 'work', 'payFloor']) {
         if (!String(fd.get(n) || '').trim()) return fail('Please fill in the starred questions.', form.elements[n]);
     }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fd.get('email'))) return fail('That email address looks off.', form.elements.email);
@@ -368,7 +374,7 @@ form.addEventListener('submit', async e => {
     const data = {};
     for (const [k, v] of fd.entries()) {
         if (k === 'resume') continue;
-        if (['setting', 'shifts', 'mustHaves'].includes(k)) (data[k] = data[k] || []).push(v);
+        if (['setting', 'shifts', 'mustHaves', 'workplace'].includes(k)) (data[k] = data[k] || []).push(v);
         else data[k] = typeof v === 'string' ? v.trim() : v;
     }
     data.consent = true;
